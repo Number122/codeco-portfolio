@@ -23,7 +23,7 @@
 1. **کلون کردن مخزن:**
 
    ```bash
-   git clone https://github.com/Number122/repo-name.git
+   git clone https://github.com/Number122/codeco-portfolio.git
    ```
 
 2. **نصب وابستگی‌ها:**
