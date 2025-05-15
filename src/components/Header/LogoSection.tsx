@@ -6,7 +6,7 @@ const LogoSection = () => {
   return (
     <div className="flex items-center gap-4">
       <Image
-        src="/logo.jpg"
+        src="/logo.svg"
         alt="Code Co Logo"
         width={56}
         height={56}
