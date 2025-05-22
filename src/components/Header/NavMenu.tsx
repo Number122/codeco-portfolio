@@ -11,11 +11,18 @@ const menuItems = [
   { name: "Price of Project", href: "/price", highlight: true },
 ];
 
-const NavMenu = () => {
+interface NavMenuProps {
+  position?: "left" | "right";
+}
+
+const NavMenu = ({ position = "left" }: NavMenuProps) => {
+  const items =
+    position === "left" ? menuItems.slice(0, 3) : menuItems.slice(3);
+
   return (
     <nav className="hidden md:block">
       <ul className="flex items-center gap-6">
-        {menuItems.map((item) => (
+        {items.map((item) => (
           <li key={item.name}>
             <Link
               href={item.href}

@@ -12,13 +12,22 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo and Site Title */}
-          <Link href="/" className="flex-shrink-0">
-            <LogoSection />
-          </Link>
+          {/* Left Navigation */}
+          <div className="flex-1">
+            <NavMenu position="left" />
+          </div>
 
-          {/* Desktop Navigation Menu */}
-          <NavMenu />
+          {/* Logo and Site Title */}
+          <div className="flex-shrink-0 mx-8">
+            <Link href="/">
+              <LogoSection />
+            </Link>
+          </div>
+
+          {/* Right Navigation */}
+          <div className="flex-1 flex justify-end">
+            <NavMenu position="right" />
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -67,36 +76,19 @@ const Header = () => {
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-3 border-t border-gray-200">
             <nav className="mt-4 space-y-4 px-2">
-              <Link
-                href="/clients"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md"
-              >
-                Clients
-              </Link>
-              <Link
-                href="/calendar"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md"
-              >
-                Calendar
-              </Link>
-              <Link
-                href="/contact"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md"
-              >
-                Contact
-              </Link>
-              <Link
-                href="/about"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md"
-              >
-                About Me
-              </Link>
-              <Link
-                href="/price"
-                className="block px-3 py-2 text-base font-medium text-indigo-600 hover:text-indigo-800 hover:bg-gray-50 rounded-md"
-              >
-                Price of Project
-              </Link>
+              {menuItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`block px-3 py-2 text-base font-medium ${
+                    item.highlight
+                      ? "text-indigo-600 hover:text-indigo-800"
+                      : "text-gray-700 hover:text-indigo-600"
+                  } hover:bg-gray-50 rounded-md`}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </nav>
           </div>
         )}
